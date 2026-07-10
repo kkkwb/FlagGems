@@ -33,11 +33,8 @@ def lift(A):
     C++ internals to set grad_fn on existing tensors.
 
     .. note::
-        This implementation returns the input tensor unchanged. It does NOT
-        modify autograd metadata (is_leaf, grad_fn) because PyTorch's autograd
-        graph manipulation requires C++ internals not accessible from Python.
-        For compiled-graph use cases that only need tensor identity semantics,
-        this implementation is sufficient.
+        Autograd metadata (is_leaf, grad_fn) is handled by PyTorch's native
+        autograd dispatch, not by this function.
     """
     logger.debug("GEMS LIFT")
     return A
